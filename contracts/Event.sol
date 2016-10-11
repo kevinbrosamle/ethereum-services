@@ -21,12 +21,35 @@ contract Event {  // can be killed, so the owner gets sent the money in the end
   string public image;
 
   event PurchaseTicket(address _from, uint _amount, uint _numAttendees); // so you can log the event
-  event RefundTicket(address _to, uint _amount); // so you can log the event
   event InsufficientEther(uint _amountSent, uint _price);
-  event CreateEvent(address _organizer, uint _numAttendees, uint _quota, uint _price, string _eventName, uint _eventCreateDateTime, uint _eventStartDateTime, uint _eventEndDateTime, string _description); // If this event is too long, it will not compile because it is too big
+  event CreateEvent(
+    address _organizer,
+    uint _numAttendees,
+    uint _quota,
+    uint _price,
+    string _eventName,
+    uint _eventCreateDateTime,
+    uint _eventStartDateTime,
+    uint _eventEndDateTime,
+    string _description); // If this event is too long, it will not compile because it is too big
   event ExceedQuota(uint _numAttendees, uint _quota);
 
-  function Event(address _organizer, string _eventName, uint _price, uint _quota, uint _eventCreateDateTime, uint _eventStartDateTime, uint _eventEndDateTime, string _description, string _addressLine1, string _addressLine2, string _city, string _state, string _zipPostalCode, string _country, string _image) { //TODO: add params to customize the event
+  function Event(
+    address _organizer,
+    string _eventName,
+    uint _price,
+    uint _quota,
+    uint _eventCreateDateTime,
+    uint _eventStartDateTime,
+    uint _eventEndDateTime,
+    string _description,
+    string _addressLine1,
+    string _addressLine2,
+    string _city,
+    string _state,
+    string _zipPostalCode,
+    string _country,
+    string _image) { //TODO: add params to customize the event
     /*organizer = msg.sender;*/
     organizer = _organizer;
     eventName = _eventName;
@@ -44,7 +67,16 @@ contract Event {  // can be killed, so the owner gets sent the money in the end
     zipPostalCode = _zipPostalCode;
     country = _country;
     image = _image;
-    CreateEvent(organizer, numAttendees, quota, price, eventName, eventCreateDateTime, eventStartDateTime, eventEndDateTime, description); // If this event is too long, it will not compile because it is too big
+    CreateEvent(
+      organizer,
+      numAttendees,
+      quota,
+      price,
+      eventName,
+      eventCreateDateTime,
+      eventStartDateTime,
+      eventEndDateTime,
+      description); // If this event is too long, it will not compile because it is too big
   }
 
   // payable keyword is necessary to allow for transfer of ether.
